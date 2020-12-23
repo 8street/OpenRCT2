@@ -375,6 +375,7 @@ public:
     uint8_t num_circuits;
     CoordsXYZ CableLiftLoc;
     uint16_t cable_lift;
+    uint8_t SellingItemColourIsRandom;
     // These fields are used to warn users about issues.
     // Such issue can be hacked rides with incompatible options set.
     // They don't require export/import.
@@ -467,6 +468,8 @@ public:
 
     uint8_t GetNumShelteredSections() const;
     void IncreaseNumShelteredSections();
+
+    bool HasRecolourableShopItems() const;
 };
 
 #pragma pack(push, 1)

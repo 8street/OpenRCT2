@@ -7372,6 +7372,23 @@ void Ride::IncreaseNumShelteredSections()
     num_sheltered_sections |= newNumShelteredSections;
 }
 
+bool Ride::HasRecolourableShopItems() const
+{
+    const auto rideEntry = GetRideEntry();
+    if (rideEntry == nullptr)
+        return false;
+
+    for (int itemIndex = 0; itemIndex < NUM_SHOP_ITEMS_PER_RIDE; itemIndex++)
+    {
+        const ShopItem currentItem = rideEntry->shop_item[itemIndex];
+        if (currentItem != ShopItem::None && GetShopItemDescriptor(currentItem).IsRecolourable())
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 std::vector<ride_id_t> GetTracklessRides()
 {
     // Iterate map and build list of seen ride IDs
